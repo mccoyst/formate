@@ -65,14 +65,17 @@ func main() {
 
 				line = first
 				if i+1 < len(para) {
-					if isLiteral(para[i+1]) {
+					j := i+1
+					if isLiteral(para[j]) {
 						// next line is literal, so insert rest before it
-						para = append(para[i+1:], append(para[:i+1], rest)...)
+						para = append(para, nil)
+						copy(para[j+1:], para[j:])
+						para[j] = rest
 					} else {
 						if rest[len(rest)-1] != ' ' {
 							rest = append(rest, ' ')
 						}
-						para[i+1] = append(rest, para[i+1]...)
+						para[j] = append(rest, para[j]...)
 					}
 				} else {
 					para = append(para, rest)
