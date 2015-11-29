@@ -54,14 +54,15 @@ func main() {
 				for _, r := range string(line) {
 					rs = append(rs, r)
 				}
-				i := maxLen
-				for ; i >= 0; i-- {
-					if rs[i] == ' ' {
+				sp := maxLen
+				for ; sp >= 0; sp-- {
+					if rs[sp] == ' ' {
 						break
 					}
 				}
-				first := encodeRunes(rs[:i])
-				rest := encodeRunes(rs[i+1:])
+				first := encodeRunes(rs[:sp])
+				rest := encodeRunes(rs[sp+1:])
+
 				line = first
 				if i+1 < len(para) {
 					if isLiteral(para[i+1]) {
