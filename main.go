@@ -100,7 +100,7 @@ func scanPara(r *bufio.Scanner) ([][]byte, bool) {
 		if len(bytes.TrimSpace(line)) == 0 {
 			return para, true
 		}
-		para = append(para, line)
+		para = append(para, append([]byte(nil), line...))
 	}
 	return para, false
 }
